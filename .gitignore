@@ -10,5 +10,8 @@ assets/css/webfonts.css
 .DS_Store
 *.sublime-project
 *.sublime-workspace
+*.bat
+_config_localhost.yml
 codekit-config.json
+package.json
 node_modules
