@@ -50,6 +50,13 @@
 				<li><a href="{{ site.url }}/tags/">All Tags</a></li>
 			</ul>
 		</li>
+		{% if site.owner.github %}
+			<li id="repo-list-btn" data-github-id="{{ site.owner.github }}">
+				<a href="#">Repositories</a>
+				<ul class="dl-submenu">
+				</ul>
+			</li>
+		{% endif %}
 		{% for link in site.links %}<li>{% if link.external %}<a href="{{ link.url }}">{{ link.title }}</a>{% else %}<a href="{{ site.url }}{{ link.url }}">{{ link.title }}</a>{% endif %}</li>{% endfor %}
 	</ul><!-- /.dl-menu -->
 </nav><!-- /.dl-menuwrapper -->

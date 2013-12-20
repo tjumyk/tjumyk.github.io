@@ -4,6 +4,8 @@ gen_font
 .jshintrc
 Gruntfile.js
 assets/less
+assets/css/*.css
+!assets/css/main.min.css
 assets/js/plugins/*.js
 assets/js/_*.js
 assets/css/webfonts.css
