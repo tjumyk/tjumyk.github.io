@@ -13,7 +13,7 @@ assets/css/webfonts.css
 *.sublime-project
 *.sublime-workspace
 *.bat
-_config_localhost.yml
 codekit-config.json
 package.json
 node_modules
+Gemfile.lock

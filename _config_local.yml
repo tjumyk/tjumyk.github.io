@@ -3,7 +3,7 @@ description:      A personal tech blog on GitHub, talking about ideas, skills an
 encoding:         utf-8
 disqus_shortname: tjumyk-github
 #Your site's domain goes here. Leave localhost server or blank when working locally.
-url:              http://tjumyk.github.io
+url:              http://localhost:4000
 
 # Owner/author information
 owner:
@@ -68,7 +68,7 @@ kramdown:
     coderay_css: class
 
 include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "gen_font", "*.bat", "_config_localhost.yml"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "gen_font", "*.bat", "_config_local.yml", "Gemfile", "Gemfile.lock"]
 
 gems:
 - jekyll-mentions
