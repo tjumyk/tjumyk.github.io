@@ -17,3 +17,4 @@ codekit-config.json
 package.json
 node_modules
 Gemfile.lock
+*~
