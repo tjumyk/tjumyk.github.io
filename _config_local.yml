@@ -71,7 +71,6 @@ include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "gen_font", "*.bat", "_config_local.yml", "Gemfile", "Gemfile.lock"]
 
 gems:
-- jekyll-mentions
 - jemoji
 - jekyll-redirect-from
 - jekyll-sitemap
