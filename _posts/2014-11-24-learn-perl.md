@@ -481,6 +481,9 @@ $girls = @names;
 @list = ();    # 正确方式一
 undef @list;   # 正确方式二
 @list = undef; # 错误方式，该操作会将数组赋值为包含一个undef元素的数组。
+
+# 双引号字符串中的数组变量会被解释，其中的元素会被按顺序打印出来，元素之间以单个空格隔开
+print "The list is @list \n"; 
 {% endhighlight %}
 
 Perl中没有多维数组，但是可以通过保存了一系列引用的数组来模拟多维数组，因为引用也是一种scala值，这将在后面涉及。
@@ -529,22 +532,229 @@ $list[999] = 0;  # 方法一，给最后一个元素赋值
 $#list = 999;    # 方法二，设置最后一个元素的下标
 {% endhighlight %}
 
-
-> 未完待续 :smile:
-
 ## 4.5 切片
+
+切片是对数组中元素子集的引用。
+
+{% highlight perl %}
+@salaries = (34000, 41950, 52100, 39650);
+@salaries[4, 5] = (48500, 41500);
+@first3_salaries = @salaries[0, 1, 2];
+@next3_salaries = @salaries[3..5];
+
+@list = (1, 3, 5, 7, 9) [$first, $second]; # list字面值也可以使用切片
+
+@list = (2, 4, 6, 8);
+@list[1, 3] = @list[3, 1]; # 交换数组中的元素
+
+{% endhighlight %}
 
 ## 4.6 Scalar和list上下文
 
+Perl中操作数的上下文影响了其在表达式中的值。上下文分两种，scala和list。赋值语句的左值类型决定了该操作的上下文，例如赋值语句左侧是scala，右侧是数组，则数组的长度会被赋给左值。一些函数和操作符需要其参数为scala，一些需要list类型。我们可以强制转换list类型为scala类型，但不能强制转换任何类型为list类型，因为如果某个函数需要list参数的话，其参数已经被强制转换为了list类型。当list字面值赋值给scala时，会将其中的最后一个元素的值赋给scala变量。还有的操作符在两种上下文中都可以使用。
+
+{% highlight perl %}
+@list + 0                                              # 强制转换list为scala
+print "Length of \@list is: ", scalar(@list), "\n";    # 强制转换list为scala
+
+$x = (7, 12, 27, 5);    # $x的值为list的最后一个元素，即为5
+$x = qw(a b c d);       # $x的值为数组长度，即为4
+
+$next = <STDIN>;        # 读入一行
+@input = <STDIN>;       # 读入所有行，数组中每个元素为一行的输入内容
+{% endhighlight %}
+
 ## 4.7 foreach语句
+
+{% highlight perl %}
+foreach $age (@ages){              # 遍历数组
+    $age++;
+}
+
+foreach $count (1, 3, 5, 7, 9){    # 遍历list字面值
+    $sum += $salaries[$count];
+}
+
+foreach $index (0..99){            # 遍历以范围表示的list字面值
+    $sum += $list[$index];
+}
+
+$sum += $list[$_] foreach (0..99); # 作为语句修饰符使用，这里用隐式变量$_保存遍历时的数组元素
+{% endhighlight %}
 
 ## 4.8 List操作符
 
+Perl提供了很多操作数组和list的操作符，由于数组的值就是list，所以我们一般把它们叫做list操作符。提醒下，操作符和函数是等价的。
+
+* reverse
+
+{% highlight perl %}
+@names = ("Al", "Bob", "Jake");
+@rnames = reverse @names;       # 数组逆序，结果为("Jake", "Bob", "Al")
+
+$name = "adam";
+$rname = reverse $name;         # scala变量会被强制转换为字符串，并逆序，这里就是"mada"
+{% endhighlight %}
+
+* sort
+
+{% highlight perl %}
+@sorted_names = sort @names;    # 排序数组，直接这样使用sort操作符的话，其中每个元素被强制转换为
+                                # 字符串并以字典序排序
+
+@list = (42, 68, 10, 5, 103);
+@sorted_list = sort @list;      # 所以这里以字典序排序的结果不是我们想要的，如何让sort操作符按
+                                # 数值排序会在后面涉及
+{% endhighlight %}
+
+* x (乘号)
+
+{% highlight perl %}
+@valentine = ("I love you!") x 5; # 创建包含5个同样字符串的数组
+@list = (0) x @list;              # 由于x右侧值为scala，这里右边的@list会被转换为其长度，所以
+                                  # 结果是将该list所有元素置0
+{% endhighlight %}
+
+* chop 和 chomp
+
+{% highlight perl %}
+@list = ('little', 'green', 'apples');
+chop(@list);       # 对数组中每个字符串使用chop，并返回最后一个字符串中被截取的末尾字符，这里
+                   # 就是‘s’
+
+@input = <STDIN>;
+chomp(@input);     # 对数组中每个字符串使用chomp，并返回总共删除的行分隔符的数量
+
+{% endhighlight %}
+
+* splice
+
+{% highlight perl %}
+@list = (2, 4, 6, 8, 10);
+splice (@list, 3);             # 去掉index从3开始的元素，现在list值为(2, 4, 6)
+
+@list = (2, 4, 6, 8, 10);
+splice (@list, 2, 2);          # 去掉index从2开始的2个元素，现在list值为(2, 4, 10)
+
+@list = (1, 2, 3, 4, 5);
+@new = (7, 6);
+splice (@list, 2, 2, @new);    # 去掉index从2开始的2个元素并插入新元素，
+                               # 现在list值为(1, 2, 7, 6, 5)
+
+@list = (1, 2, 3, 4, 5);
+@new = (7, 6);
+splice (@list, 2, 0, @new);    # 也可以不删除元素，插入新元素，现在list值为
+                               # (1, 2, 7, 6, 3, 4, 5)
+
+@list = (1, 2, 3, 4, 5);
+splice (@list, 2, 2, 9, 8, 7); # 还可以把新元素的值直接写在参数中（从第4个参数开始），现在list
+                               # 值为(1, 2, 9, 8, 7, 5)                               
+{% endhighlight %}
+
+* push 和 pop
+
+{% highlight perl %}
+push @stack1, "Mary";
+
+push @stack2, (9, 11, 13);
+
+push @stack2, 9, 11, 13;   # 等价于 push(@stack2, 9, 11, 13)
+
+$value = pop @stack1;
+
+@list = ("bob", "carol", "ted");
+@name = shift @list;       # shift与pop类似，只是在数组开头弹出元素
+unshift @list , "mikie";   # unshift与push类似，只是在数组开头压入新元素
+
+push @list, shift(@list);  # 结合push和shift可以循环转动元素（rotate）
+unshift @list, pop(@list); # 类似上面的操作，只是方向相反
+{% endhighlight %}
+
+* split
+
+`split [/Pattern/[, Expression[, Limit]]]` 类似于javascript的`split`函数。其中`/Pattern/`为正则表达式，`Expression`为目标表达式，`Limit`是产生的最大元素数量
+
+{% highlight perl %}
+@fruit = split /,/, "apples,gwapes,pineapples,cannonballs", 3;
+# 结果为("apples", "gwapes", "pineapples,cannonballs")
+
+@fruit = split /,/, "apples,gwapes,pineapples,cannonballs";
+# 结果为("apples", "gwapes", "pineapples", "cannonballs")
+
+@fruit = split /,/; # 用给定的正则表达式对$_执行split操作
+
+@fruit = split ;    # 用空白符（即/\s/）对$_执行split操作
+{% endhighlight %}
+
 ## 4.9 命令行参数
+
+`@ARGV`是Perl中保存所有命令行参数的隐式变量，因此可以用如下方式访问所有命令行参数：
+
+{% highlight perl %}
+# 方法一
+foreach $index (0 .. $#ARGV) {
+    print "$ARGV[$index] \n";
+}
+
+# 方法二
+$num_args = $#ARGV + 1;
+for ($count = 1; $count <= $sum_args; $count++){
+    $argument = shift(@ARGV);
+    print "$argument \n";
+}
+
+# 由于pop和shift有默认参数@ARGV，所以下述代码可以替代方法二中for循环里的$argument = shift(@ARGV);
+$argument = shift;
+{% endhighlight %}
 
 # 五、Hash和引用
 
+Hash有时被称为关联数组，或者哈希表。Perl是唯一的一个拥有内置Hash支持的且被广泛使用的语言。Hash结合引用类型的scala变量可以构造出复杂的数据结构，例如数组的数组或者hash的数组。
+
 ## 5.1 Hash结构
+
+Hash和数组很像，但两者最主要的区别是：
+
+1. Hash结构中数据元素由字符串值索引，这些字符串也被保存在Hash中，并被称为键(key)。
+
+2. Hash结构中的数据元素并没有经过排序。
+
+Hash中的每个元素是一对scalar值，其中前者是键，后者为值。Hash变量以`%`开头，和数组类似，使用Hash变量不需要提前声明，并且它会根据需要自动增长，也可以在任何时候将其压缩。我们可以通过键来访问Hash中对应的值。
+
+{% highlight perl %}
+# Perl中并没有Hash字面值，取而代之的是如下所示的list字面值：
+("bob", 42, "carol", 40, "ted", 29)
+
+# =>符号可以替换其中的部分逗号来使其更加具有可读性
+("bob" => 42, "carol" => 40, "ted" => 29)
+
+# =>左侧的值会被隐式地加上引号
+(print => "yes") # 等价于("print" => "yes")
+
+# 当数组赋值给hash时，奇数位值作为键，偶数位作为对应的值
+@list = ("Grumpy" => 44, "Sleepy" => 27, "Maxine" => 79);
+%dwarfs_ages = @list;
+%salaries = ("Bill" => 79_500, "Billy" => 43_000, "Billie" => 55_200);
+
+# 当hash的值赋给数组时，按键值对展开，但顺序是任意的，例如上面的%salaries赋给数组可能会得到如下结果：
+("Billie", 55200, "Billy", 43000, "Bill", 79500);
+
+$salaries{"Billy"}             # 43000
+$salaries{"Willie"} = 47000;   # 插入新的键值对或更改已有键对应的值
+$salaries{Bill} += 500;        # {}中间的键是隐式加上引号的，相当于$salaries{"Bill"} += 500
+
+# 将hash置空的两种方式
+%salaries = ();
+undef %salaries;
+
+# hash变量在引号中不会被解释，以防止与printf中的格式符冲突
+print "%salaries"; # 会打印"%salaries"
+
+# 切片
+@some_salaries = @salaries{"Bill", "Billy"}; # 注意切片以@开头，因为hash切片的结果是数组
+{% endhighlight %}
+
+> 未完待续 :smile:
 
 ## 5.2 Hash操作符
 
