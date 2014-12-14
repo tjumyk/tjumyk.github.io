@@ -754,31 +754,251 @@ print "%salaries"; # 会打印"%salaries"
 @some_salaries = @salaries{"Bill", "Billy"}; # 注意切片以@开头，因为hash切片的结果是数组
 {% endhighlight %}
 
-> 未完待续 :smile:
-
 ## 5.2 Hash操作符
+
+{% highlight perl %}
+delete $salaries{"Bill"};   # 删除hash中Bill这个键及其对应的值
+undef $salaries{"Billy"};   # 这并不能删除删除这个键，只能将该键对应的值设为undef
+exists $salaries{"Billy"};  # 判断hash中是否存在某个键，返回布尔值
+
+@days = keys %highs;        # 获得hash中的所有键，返回的是数组
+# 可以结合foreach使用，打印出hash中的所有键值
+foreach $day (keys %highs){
+    print "On $day the high temperature was $highs{$day} \n";
+}
+$length = keys %highs;      # 获取键的数量（因为等号左侧是scala变量）
+
+# values可以获得所有值，没有特定的顺序，没有关联的键，所以可能不是很实用
+foreach $temp (values %highs) { print "$temp \n" }
+
+# 还可以使用each操作符来遍历hash中的键值对
+while(($day, $temp) = each %highs){
+    print "On $day the high temperature was $temp \n";
+}
+{% endhighlight %}
+
+Perl有预定义的hash：`%ENV`，保存了操作系统的环境变量。
 
 ## 5.3 引用
 
+下面讨论第三种scala类型——引用。它与其他语言中的指针类似。许多应用程序需要使用复杂的数据结构。这些结构可以通过常指针，即Perl中的引用来定义和操作。引用的值是地址，这些地址可以是其他命名变量的地址或者匿名变量（字面值）的地址，或者甚至是我们将在后面介绍的子程序的地址。没有名字的匿名变量只可以通过引用来使用。
+
+反斜杠`\`可用于将命名变量或scala字面值的地址赋给一个变量，保存该地址的变量即为一个硬引用。解引用（dereference）只需将值变量的名字中字母或数字部分替换成对应引用变量的名字，而对数组或hash解引用还可以使用`->`操作符。另外，Perl中也可以使用变量名称的字符串来作为一种引用，即软引用，其解引用方式与硬引用相同。具体实例如下：
+
+{% highlight perl %}
+$sum = 0;
+$ref_sum = \$sum;
+@list = (1, 3, 5, 7);
+$ref_list = \@list;
+
+$ref_list = [1, 3, 5, 7]; # list字面值也可以用[]来声明，从而得到其地址
+$ref_hash = {             # hash字母值(本质上还是list字面值)可以用{}来声明，从而得到其地址
+    'Bob' => '42',
+    'Jake' => '12',
+    'Darcie' => '11'
+};
+$ref_pi = \3.14159;       # 用\取得scala字面值的地址
+
+$sum = 17;
+$ref_sum = \$sum;
+print "The sum is: $$ref_sum \n"; # 显示：The sum is: 17
+print "The sum is: $ref_sum \n";  # 显示：The sum is: SCALAR(0xb75d3c)
+
+$$ref_list[3] = 17;
+$ref_list -> [3] = 17;       # 与上式等价
+
+$$ref_hash{'Bob'} = '42';
+$ref_hash -> {'Bob'} = '42'; # 与上式等价
+
+$sum_name = "sum";
+$$sum_name = 17;
+{% endhighlight %}
+
+使用软引用十分危险，因为可能由于拼错引用的变量的名称而导致严重的后果，所以可以使用`use strict 'refs';`来指示编译器禁用这种符号引用。
+
 ## 5.4 嵌套数据结构
+
+有了引用变量，我们可以构造比数组和hash更加复杂的数据结构。
+
+{% highlight perl %}
+@mat = (
+    [1, 3, 5],
+    [7, 9, 11],
+    [13, 15, 17]
+);
+
+$ref_mat = [
+    [1, 3, 5],
+    [7, 9, 11],
+    [13, 15, 17]
+];
+
+@row1 = (1, 3, 5);
+@row2 = (7, 9, 11);
+@row3 = (13, 15, 17);
+@mat = (\@row1, \@row2, \@row3);
+
+print "The (2,3) element is: $mat[2] -> [3] \n";
+print "The (2,3) element is: $mat[2][3] \n";      # 两个[]之间的->可以省略
+$ref_mat -> [2][2] = 17;
+$$ref_mat[2][2] = 17;    # 由于$的优先级比[]高，所以该式与上式等价
+
+# 读取矩阵的示例
+$num_rows = <STDIN>;  # 输入行数
+foreach $row_num (0 .. $num_rows - 1){
+    $temp = <STDIN>;
+    @row = split / /, $temp;
+    $mat[$row_num] = [ @row ];
+}
+
+# 打印矩阵的示例
+foreach $ref_row (@mat){
+    print "@$ref_row";
+}
+{% endhighlight %}
 
 # 六、函数
 
+Perl中，函数又叫子程序。
+
 ## 6.1 子程序基础
+
+Perl中的子程序没有显式地指定参数数量、参数类型和返回值类型。子程序可以在其他子程序的函数体以外的任何地方定义。
 
 ## 6.2 无参数的函数
 
+{% highlight perl %}
+# 函数声明
+sub print_header;
+
+# 函数定义
+sub print_header {
+    print "\n Program Output \n\n";
+}
+
+# 直接函数调用
+print_header(); # 当作函数来调用
+print_header;   # 当作操作符来调用
+
+# 用在表达式中
+$result = 2 * fun() + 1;
+$sum = sumer();
+
+# 下述两种带有返回值的函数等价
+$pi = 3.14159;
+sub two_pi_1 {
+    return (2 * $pi);
+}
+sub two_pi_2 {
+    2 * $pi;     # 如果sub块的最后不是return语句，则最后一个表达式的值将作为返回值
+}
+
+# 函数调用的上下文决定了其返回值求值时的上下文
+sub sub1{
+    @result = (1, 3, 5);
+}
+$scalar = sub1();  # 值为3
+@list = sub1();    # 值为1 3 5
+{% endhighlight %}
+
 ## 6.3 变量的作用域和生命周期
+
+Perl中的变量是隐式地属于全局变量，但我们可以通过`my`和`local`来定义局部变量，并且可以通过`use strict 'vars'`来通知编译器禁用全局变量。
+
+{% highlight perl %}
+sub sub1{
+    my $sum = 0; # 用my声明的局部变量仅在当前区块中有效
+    ...
+}
+
+my($a, $b, $c);               # 声明多个局部变量
+my($a, @list) = (3, 2, 7, 6); # 声明并初始化多个局部变量
+
+# 任何非函数体的区块都可以被嵌套，所有区块中都可以定义对应的局部变量
+$temp = 5; # 全局变量
+{
+    my $temp = 10; # 外层区块的局部变量
+    if($list[$outer] > $list[$inner]){
+        my $temp = $list[$inner]; # 内层区块的局部变量
+        $list[$inner] = $list[$outer];
+        $list[$outer] = $temp;
+    }
+}
+
+sub sub2{
+    local $count = 0; # 用local声明的局部变量（或者说"半局部变量"）在当前区块以及调用的函数的
+                      # 函数体中有效
+    addCount();
+}
+sub addCount{
+    $count++;
+}
+sub2();
+{% endhighlight %}
 
 ## 6.4 参数
 
+{% highlight perl %}
+# 使用@_(或@ARG，前提是使用'use English')获得函数调用时传入的参数
+sub adder{
+    ++@ARG[0]; # 直接操作@ARG，即相当于引用传参
+    ++@ARG[1];
+}
+$x = 7;
+@list = (1, 3, 5);
+adder($x, @list);   # 函数返回后，$x值为8，@list值为(2, 3, 5)
+
+sub sub1{
+    my ($x, $y, $z) = @ARG; # 新建局部变量保存传入参数，即相当于拷贝传参
+    ...
+}
+
+# 当传入参数为引用类型时
+sub add_1_scalar{
+    my $param = $ARG[0];
+    $$param++; # 解引用
+}
+add_1_scalar(\$sum);
+
+# 当需要向某个函数传入当前@ARG值（调用该函数前的值），而不是新建一个@ARG时，可以这样调用函数
+&sub1;
+{% endhighlight %}
+
 ## 6.5 非直接的函数调用
+
+我们可以通过`\`和`&`来获得函数的地址，从而保存到引用变量中，然后可以通过`&`解引用来调用该函数。当然，我们也可以采用软引用，直接使用函数名称字符串来解引用。
+
+{% highlight perl %}
+# 保存函数地址
+$ref_fun = \&print_header;
+$ref_fun_soft = "print_header";
+$ref_fun_anonymous = sub {
+    print "\n Program Output \n\n";
+}
+# 通过引用变量调用函数
+&$ref_fun();
+&$ref_fun_soft();
+&$ref_fun_anonymous();
+{% endhighlight %}
 
 ## 6.6 Perl预定义函数
 
+具体请查表，略
+
 ## 6.7 再谈sort函数
 
-## 6.8 pack和unpack函数
+sort函数可以接受两个参数，其中第一个参数为排序操作时的比较函数，第二个参数则是需要排序的数组。该比较函数可以采用函数名、函数区块或者一个值为函数名称或函数地址的scala变量。该函数中包含了隐式变量`$a`和`$b`，对应了每次比较的两个元素，该函数需要返回0表示两者顺序无关，或大于0表示两者需要对调位置，或小于0表示两者已经排好序。Perl提供了两个默认的比较函数：`<=>`来比较数值，`cmp`来比较字符串。通过自定义比较函数，我们可以完成自定义的排序操作。另外，这里`$a`和`$b`即使在`use strict 'vars'`时仍可使用，因为它们是特殊的局部变量，不受此命令限制。
+
+{% highlight perl %}
+sort { $a <=> $b } @list; # 默认排序
+sort { $b <=> $a } @list; # 逆序排序数值
+sort { $b cmp $a } @list; # 逆序排序字符串
+
+# 示例：将hash中的键值对按照值的大小逆序输出
+foreach $key (sort { $top_five{$b} <=> $top_five{$a}; } keys %top_five){
+    print "$key \t $top_five{$key} \n";
+}
+{% endhighlight %}
 
 > 参考书籍：《<a href="http://www.amazon.com/Little-Book-Perl-Robert-Sebesta/dp/0139279555" target="_blank">A Little Book on Perl</a>》, Robert W. Sebesta, Prentice Hall.
 
