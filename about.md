@@ -1,33 +1,77 @@
 ---
 layout: page
 permalink: /about/
-title: About the Theme
-tags: [Jekyll, theme, modern, minimal, responsive]
+title: About Me
+tags: 
 image:
-  feature: abstract-5.jpg
-  credit: dargadgetz
-  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
+  feature: Binary BackGroud for Tools and Softwares by pcbots.png
+  background: gplaypattern.png
 share: true
 ---
 
-They say three times the charm, so here is another free responsive Jekyll theme for you. I've learned a ton since open sourcing my first two themes [on Github](http://github.com/mmistakes), and wanted to try a few new things this time around. If you've used my previous themes most of this should be familiar territory...
+With great love and passion about software development.
+Good at developing desktop applications, games, websites and Android
+applications.
 
-## What HPSTR brings to the table:
+## TECHNICAL SKILLS
 
-* Responsive templates for post, page, and post index `_layouts`. Looks great on mobile, tablet, and desktop devices.
-* Gracefully degrads in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.  
-* Modern and minimal design.
-* Sweet animated menu.
-* Background image support.
-* Readable typography to make your words shine.
-* Support for large images to call out your favorite posts.
-* Comments powered by [Disqus](http://disqus.com) if you choose to enable.
-* Simple and clear permalink structure[^1].
-* [Open Graph](https://developers.facebook.com/docs/opengraph/) and [Twitter Cards](https://dev.twitter.com/docs/cards) support for a better social sharing experience.
-* Simple [custom 404 page]({{ site.url }}/404.html) to get you started.
-* Stylesheets for Pygments and Coderay [syntax highlighting]({{ site.url }}/code-highlighting-post/) to make your code examples look snazzy
-* [Grunt](http://gruntjs.com) build script for easy theme development
+### Programming Languages
 
-<div markdown="0"><a href="{{ site.url }}/theme-setup" class="btn btn-info">Install the Theme</a></div>
+* C/C++, Java, C#, Assembly, HTML, JavaScript, CSS, PHP, SQL, Windows/Linux Shell, Perl
 
-[^1]: Example: *domain.com/category-name/post-title*
+### Experience in developing softwares
+
+* Cross-platform desktop applications based on Java
+* Web client/server application
+* Websites based on JSP/PHP
+* Designing and interacting with databases(MySQL, PostgreSQL)
+* Windows 8 Modern(Metro) application
+* Games based on HTML5 / OpenGL / SDL / JavaFx2
+* Android games / application
+* Chrome browser plugin
+* Familiar with various frameworks and toolkits: Bootstrap, Mybatis, Struts2, junit...
+* Familiar with various IDE: Visual Studio, Eclipse, IntelliJ IDEA, Netbeans, Codeblocks, Emacs...
+* Maven, Git, Subversion, Markdown...
+
+### Others
+
+* Have 13 open source projects on GitHub (ID: tjumyk)
+* Know various kinds of open source projects and have used some of them
+* Editing images using Photoshop
+
+## CERTIFICATES AND HONOR
+
+2013.8-2013.12
+: Microsoft Student Partner
+
+2013.7
+: IBM Certificate of Virtualization & Cloud Computing
+
+2012.7 
+: 2nd Price in The 5th Innovation Competition in Construction Engineering and Management (Tsinghua University & Gammon Construction Limited)
+
+2011.1
+: IBM AIX Certificate
+    
+## INTERNSHIP
+
+2014.3-2014.5
+: Software Developer, China Automotive Technology & Research Center
+: _Developed a desktop application for browsing and search automotive production and sales information in China based on JavaFx._
+
+2013.7-2013.8
+: Software Developer, ChinaSoft International Limited(Stock: HK00354)
+: _Developed an STG(Shooting Game) application on Android platform_
+    
+## EDUCATION
+
+2014.7-2016.6
+: Master of Information Technology (Ongoing), School of Computer Science and Engineering, University of New South Wales, Australia
+
+2010.9-2014.6
+: Bachelor of Engineering, majored in software Engineering, School of Computer Software, Tianjin University, China
+
+2007.9-2010.7
+: High school, Yangzhou High School, Jiangsu Province, China
+
+![I want to change the world](/images/black-cat.jpg)
