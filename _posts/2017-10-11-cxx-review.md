@@ -10,7 +10,9 @@ comments: true
 share: true
 ---
 
-In this article, I summarize the core features of C++ programming language (C++14) as a quick review for intermediate-level programmers. So, I assume the reader is already capable of intensive programming with C, Python or Java.  
+In this article, I try to summarize the most of the **distinct features or confusing aspects** of the C++ programming 
+language (C++14) as a quick review for intermediate-level programmers. So, I assume the reader is already capable of 
+intensive programming with C, Python or Java and understand the basic concepts of programming languages.  
 
 --------------------
 # Overview
@@ -18,7 +20,8 @@ In this article, I summarize the core features of C++ programming language (C++1
 ## Types
 
 * Multi-byte char types
-   - **wchar_t**: guaranteed to be large enough to hold any charactorer in the machine's largest extended character set. Typically 32 bit.
+   - **wchar_t**: guaranteed to be large enough to hold any charactorer in the machine's largest extended character set.
+     Typically 32 bit.
    - **char16_t**(C++ 11): 16 bit Unicode character
    - **char32_t**(C++ 11): 32 bit Unicode character
 
@@ -45,6 +48,24 @@ std::numeric_limits<int>::min();
 signed int a = -1;
 unsigned int b = 1;
 std::cout << a * b << std::endl; /* will print 4294967295 (2^32-1) */
+{% endhighlight %}
+
+* `const` qualifier
+   * Top-level `const` is ignored when we copy an object because copying an object doesn't change the copied object.
+   * Low-level `const` is never ignored. When we copy an object, both objects must have the same low-level `const` 
+     qualification or there must be a conversion between the types of the two objects
+      * we can convert non-`const` to `const`
+      * the inverse conversion is invalid
+      
+{% highlight c++ %}
+int i = 0;
+const int j = i;        /* top-level const is ignored */
+int k = j;              /* top-level const is ignored */
+
+const int *p = &j;      /* low-level const must not be ignored */
+const int *const q = p; /* left-most const is low-level, 
+                           right-most const is top-level */
+const int &r = j;       /* const in reference types is always low-level */
 {% endhighlight %}
 
 * Order of evaluating two operands of a bianry operator is **undefined**. (C/C++)
@@ -76,7 +97,8 @@ int j;            /* declaration and definition */
 ## Pointers
 
 * Pointer initialization
-   * To minimise bugs, alwasy initialise pointers when they are defined. If the intended address is not available, then set to `nullptr`
+   * To minimise bugs, alwasy initialise pointers when they are defined. If the intended address is not available, then 
+     set to `nullptr`
    * `*` modifies a variable rather than the type
 
 {% highlight c++ %}
@@ -150,7 +172,10 @@ auto &w = j;              /* const int & (low-level const kept)*/
 
 ## Functions
 
-* A function must have a return type, which may be `void`
+* A function must have a return type
+   * Returning `void` means no return object
+   * Functions may not return arrays or other functions
+   * Functions may return pointers or references 
 * A function may have an empty parameter list
 
 {% highlight c++ %}
@@ -181,5 +206,43 @@ void swap(int &i, int &j); /* C++ style (pass by reference)
                               Use C++ style wherever possible */
 {% endhighlight %}
 
+* Function overloading
+   * overloading resolution is a three-step process
+      * identify **candidate** functions: same name visible at the point of call
+      * select **viable** functions: same number of parameters as arguments (and the default parameters) and the type of
+        each argument is convertible to its corresponding parameters
+      * find a **best-match**: the type match **no worse in each argument** but better in at least on argument
+   * top-level `const` is ignored for function overloading, low-level `const` is significant
+   
+{% highlight c++ %}
+Record lookup(Phone p) {...};
+Record lookup(const Phone p) {...};  /* error: redefinition, 
+                                        because top-level const is ignored */
+
+// The following overloading is correct: low-level const is not ignored
+Record lookup(Phone &p) {...};       /* (1) */
+Record lookup(const Phone &p) {...}; /* (2) */
+
+Phone p1;
+const Phone p2;
+lookup(p1);     /* call (1) */
+lookup(p2);     /* call (2) */
+{% endhighlight %}
+    
+      
+* Inline Functions
+   * Use case: we want to define **a small utility function** for a simple operation but we wish to **avoid the overhead
+     of a function call** for such a simple function
+   * An inline function is **expanded in line** at each point in the program where it is invoked.
+
+{% highlight c++ %}
+inline int min(int n, int m) {
+  return (n < m) ? n : m;
+}
+std::cout << min(i, j) << std::endl; 
+// It will be expanded into something like the line below during compilation
+// So we need to put the definitions of inline functions in the header file
+std::cout << ((i < j) ? i : j) << std::endl;
+{% endhighlight %}
 
 > To be continued
