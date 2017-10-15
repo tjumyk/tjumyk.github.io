@@ -65,6 +65,12 @@ layout: default
                     <div class="column">
                         <div class="ui fluid link card">
                             <a class="repo-logo image" href="{{repo_url}}">
+                                {% if repo.unmaintained %}
+                                <div class="ui yellow ribbon label">
+                                    <i class="warning circle icon"></i>
+                                    Unmaintained
+                                </div>
+                                {% endif %}
                                 {% if repo.logo %}
                                     {% if repo.logo_full_width %}
                                     <img src="{{ 'assets/image/repo-256.png' | relative_url }}" data-original="{{ repo.logo }}" data-loaded-class="full-width" class="lazy">

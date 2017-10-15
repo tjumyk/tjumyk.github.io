@@ -15,12 +15,12 @@
           "logo": "https://raw.githubusercontent.com/tjumyk/gophotos/master/gophotos/static/image/logo-256.png"
         },
         {
-          "id": "webscope",
-          "logo": "https://raw.githubusercontent.com/tjumyk/webscope/master/static/image/logo-256.png"
-        },
-        {
           "id": "webslide",
           "logo": "https://raw.githubusercontent.com/tjumyk/webslide/master/static/image/logo-256.png"
+        },
+        {
+          "id": "webscope",
+          "logo": "https://raw.githubusercontent.com/tjumyk/webscope/master/static/image/logo-256.png"
         }
       ]
     },
@@ -29,16 +29,8 @@
       "icon": "game",
       "repos": [
         {
-          "id": "touhou-java",
-          "logo": "https://raw.githubusercontent.com/tjumyk/touhou-java/master/Screenshots/2_small.png"
-        },
-        {
-          "id": "court-of-medici",
-          "logo": "https://raw.githubusercontent.com/tjumyk/court-of-medici/gh-pages/image/CotM_Box.jpg"
-        },
-        {
-          "id": "Five_SDL",
-          "logo": "https://raw.githubusercontent.com/tjumyk/Five_SDL/master/screenshots/1_small.png",
+          "id": "mine-sweeper",
+          "logo": "https://raw.githubusercontent.com/tjumyk/mine-sweeper/master/screenshots/1.png",
           "logo_full_width": true
         },
         {
@@ -47,10 +39,20 @@
           "logo_full_width": true
         },
         {
-          "id": "mine-sweeper",
-          "logo": "https://raw.githubusercontent.com/tjumyk/mine-sweeper/master/screenshots/1.png",
+          "id": "Five_SDL",
+          "logo": "https://raw.githubusercontent.com/tjumyk/Five_SDL/master/screenshots/1_small.png",
           "logo_full_width": true
-        }
+        },
+        {
+          "id": "touhou-java",
+          "logo": "https://raw.githubusercontent.com/tjumyk/touhou-java/master/Screenshots/2_small.png",
+          "unmaintained": true
+        },
+        {
+          "id": "court-of-medici",
+          "logo": "https://raw.githubusercontent.com/tjumyk/court-of-medici/gh-pages/image/CotM_Box.jpg",
+          "unmaintained": true
+        },
       ]
     },
     {
@@ -70,9 +72,8 @@
       "icon": "desktop",
       "repos": [
         {
-          "id": "twtfmplayer",
-          "logo": "https://raw.githubusercontent.com/tjumyk/twtfmplayer/master/screenshot.png",
-          "logo_full_width": true
+          "id": "MetaView",
+          "logo": "https://raw.githubusercontent.com/tjumyk/MetaView/master/src/org/tjumyk/metaview/images/logo_256.png"
         },
         {
           "id": "uTorrentMetro",
@@ -80,8 +81,10 @@
           "logo_full_width": true
         },
         {
-          "id": "MetaView",
-          "logo": "https://raw.githubusercontent.com/tjumyk/MetaView/master/src/org/tjumyk/metaview/images/logo_256.png"
+          "id": "twtfmplayer",
+          "logo": "https://raw.githubusercontent.com/tjumyk/twtfmplayer/master/screenshot.png",
+          "logo_full_width": true,
+          "unmaintained": true
         }
       ]
     },
@@ -121,7 +124,8 @@
           "id": "web-font-generator"
         },
         {
-          "id": "javafx-packager"
+          "id": "javafx-packager",
+          "unmaintained": true
         }
       ]
     },
@@ -142,10 +146,10 @@
       "icon": "asterisk",
       "repos": [
         {
-          "id": "litjson-portable"
+          "id": "simple-game-server"
         },
         {
-          "id": "simple-game-server"
+          "id": "litjson-portable"
         }
       ]
     }
