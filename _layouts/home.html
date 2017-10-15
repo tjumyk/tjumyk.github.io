@@ -83,13 +83,15 @@ layout: default
                                 <div class="description">{{meta_start}}description{{meta_end}}</div>
                             </div>
                             <div class="extra content" ng-show="repos['{{repo.id}}']">
+                                <div class="left floated">
+                                    <div class="ui label">{{meta_start}}language{{meta_end}}</div>
+                                </div>
                                 <span class="right floated">
                                     <i class="star icon"></i>
                                     {{meta_start}}stargazers_count{{meta_end}}
                                     <i class="fork icon"></i>
                                     {{meta_start}}forks_count{{meta_end}}
                                 </span>
-                                <div class="ui label">{{meta_start}}language{{meta_end}}</div>
                             </div>
                         </div>
                     </div>
