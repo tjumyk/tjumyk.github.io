@@ -18,16 +18,16 @@ or even a data scientist(大数据砖家) :money_mouth_face: .
     
 ## EDUCATION
 
-2016.9-Now
+2017.3 - Now
 : PhD of Computer Science, School of Computer Science and Engineering, University of New South Wales, Australia
 
-2014.7-2016.9
+2014.7 - 2016.9
 : Master of Information Technology, School of Computer Science and Engineering, University of New South Wales, Australia
 
-2010.9-2014.6
+2010.9 - 2014.6
 : Bachelor of Engineering (Software Engineering), School of Computer Software, Tianjin University, China
 
-2007.9-2010.7
+2007.9 - 2010.7
 : Yangzhou High School, Jiangsu Province, China
 
 ## Misc.
