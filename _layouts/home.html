@@ -1,0 +1,143 @@
+---
+layout: default
+---
+{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+<div ng-controller="HomeController">
+    <div class="ui master center aligned vertical segment">
+        <div class="ui container">
+            <div class="animate-logo">
+                <img src="{{ "/assets/image/logo-256-base.png" | relative_url }}">
+                <img class="left eye" src="{{ "/assets/image/logo-256-left-eye.png" | relative_url }}">
+                <img class="right eye" src="{{ "/assets/image/logo-256-right-eye.png" | relative_url }}">
+            </div>
+            <h1 class="ui site header">{{site.title | escape}}</h1>
+            <div class="switch-buttons">
+                <div class="ui labeled huge button" tabindex="0" ng-click="goTo('repos')">
+                    <div class="ui blue huge button">
+                        <i class="fork icon"></i> Repositories
+                    </div>
+                    <a class="ui basic left pointing blue label">
+                        {% assign total_repos = 0 %}
+                        {% for group in site.data.repos.groups %}
+                        {% assign group_repos = group.repos | size %}
+                        {% assign total_repos = total_repos | plus: group_repos %}
+                        {% endfor %}
+                        {{total_repos}}
+                    </a>
+                </div>
+                <div class="ui labeled huge button" tabindex="0" ng-click="goTo('articles')">
+                    <div class="ui violet huge button">
+                        <i class="file text icon"></i> Articles
+                    </div>
+                    <a class="ui basic left pointing violet label">
+                        {{site.posts | size}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="repo-groups" ng-class="{'full': show_full_repo_list}">
+        {% for group in site.data.repos.groups %}
+        {% if group.bg == blank %}
+        <div class="ui vertical repo segment">
+        {% else %}
+        <div class="ui vertical repo segment" style="background-color: {{group.bg}};">
+        {% endif %}
+            <div class="ui container">
+                {% if group.dark_bg != blank %}
+                {% assign header_class = 'inverted' %}
+                {% else %}
+                {% assign header_class = '' %}
+                {% endif %}
+                <h1 class="ui center aligned {{header_class}} header">
+                    {% if group.icon %}
+                    <i class="{{group.icon}} icon"></i>
+                    {% endif %}
+                    {{ group.group_name | escape }}
+                </h1>
+                <div class="ui doubling four column grid">
+                    {% for repo in group.repos %}
+                    {% assign repo_url = repo.id | prepend: "/" | prepend: site.github_username | prepend: "https://github.com/" %}
+                    {% assign meta_start = "{{repos['" | append: repo.id | append: "']." %}
+                    {% assign meta_end = "}}" %}
+                    {% assign meta_date_to_now_start = "{{date_to_now(repos['" | append: repo.id | append: "']." %}
+                    {% assign meta_date_to_now_end = ")}}" %}
+                    <div class="column">
+                        <div class="ui fluid link card">
+                            <a class="repo-logo image" href="{{repo_url}}">
+                                {% if repo.logo %}
+                                    {% if repo.logo_full_width %}
+                                    <img src="{{ 'assets/image/repo-256.png' | relative_url }}" data-original="{{ repo.logo }}" data-loaded-class="full-width" class="lazy">
+                                    {% else %}
+                                    <img src="{{ 'assets/image/repo-256.png' | relative_url }}" data-original="{{ repo.logo }}" class="lazy">
+                                    {% endif %}
+                                {% else %}
+                                    <img src="{{ 'assets/image/repo-256.png' | relative_url }}">
+                                {% endif %}
+                            </a>
+                            <div class="content">
+                                <a class="header" href="{{repo_url}}">{{ repo.id | escape }}</a>
+                                <div class="meta" ng-show="repos['{{repo.id}}']">
+                                    <span class="date">Updated {{meta_date_to_now_start}}pushed_at{{meta_date_to_now_end}}</span>
+                                </div>
+                                <div class="description">{{meta_start}}description{{meta_end}}</div>
+                            </div>
+                            <div class="extra content" ng-show="repos['{{repo.id}}']">
+                                <span class="right floated">
+                                    <i class="star icon"></i>
+                                    {{meta_start}}stargazers_count{{meta_end}}
+                                    <i class="fork icon"></i>
+                                    {{meta_start}}forks_count{{meta_end}}
+                                </span>
+                                <div class="ui label">{{meta_start}}language{{meta_end}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="repo-list-toggle">
+        <div class="ui large primary button" ng-click="show_full_repo_list=!show_full_repo_list">
+            <span><i class="large angle double icon" ng-class="{'up': show_full_repo_list, 'down': !show_full_repo_list}"></i></span>
+            <span ng-hide="show_full_repo_list">Show</span>
+            <span ng-show="show_full_repo_list">Hide</span>
+            Full Repo List
+            <span><i class="large angle double icon" ng-class="{'up': show_full_repo_list, 'down': !show_full_repo_list}"></i></span>
+        </div>
+    </div>
+    <div class="ui vertical articles segment" ng-class="{'normal': show_full_repo_list}">
+        <div class="ui container">
+            <h1 class="ui center aligned header"><i class="file text icon"></i>Articles</h1>
+            <div class="ui stackable doubling four column grid">
+                {% for post in site.posts %}
+                <div class="column">
+                    <div class="ui fluid link article card">
+                        <a class="image" href="{{ post.url | relative_url }}">
+                            {% if post.image.thumbnail != blank %}
+                            <img src="{{ 'assets/image/article-350.png' | relative_url }}" data-original="{{ post.image.thumbnail | prepend: 'assets/image/' | relative_url }}" class="lazy">
+                            {% else %}
+                            <img src="{{ 'assets/image/article-350.png' | relative_url }}">
+                            {% endif %}
+                        </a>
+                        <div class="content">
+                            <a class="header" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                            <div class="meta">
+                                {% for tag in post.tags %}
+                                <span class="ui label">{{tag}}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="description">{{ post.excerpt | strip_html | escape }}</div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">{{ post.date | date: date_format }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,40 @@
-<span>&copy; {{ site.time | date: '%Y' }} {{ site.owner.name }}. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/">HPSTR Theme</a>.</span>
+<footer class="ui inverted vertical footer segment">
+
+    <div class="ui container">
+
+        <div class="ui stackable inverted divided equal height stackable grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">Contact</h4>
+                <div class="ui inverted list">
+                    <a class="item">
+                        {% if site.author %}
+                        {{ site.author | escape }}
+                        {% else %}
+                        {{ site.title | escape }}
+                        {% endif %}
+                    </a>
+                    {% if site.email %}
+                    <a class="item" href="mailto:{{ site.email }}">{{ site.email }}</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="three wide column">
+                <h4 class="ui inverted header">Social</h4>
+                <div class="ui inverted list">
+                    {% if site.github_username %}
+                    <a class="item" href="https://github.com/{{ site.github_username }}"><i class="github icon"></i> {{ site.github_username }}</a>
+                    {% endif %}
+                    <a class="item" href="{{ 'feed.xml' | relative_url }}"><i class="rss square icon"></i> Subscribe via RSS</a>
+                </div>
+            </div>
+
+            <div class="ten wide column">
+                <h4 class="ui inverted header">About</h4>
+                <p>{{ site.description | escape }}</p>
+            </div>
+        </div>
+
+    </div>
+
+</footer>

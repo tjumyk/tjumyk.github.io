@@ -5,7 +5,8 @@ description: "结合Perl中的应用，简单整理一下正则表达式的学�
 modified: 2014-12-17
 tags: [Regex, Perl]
 image:
-  feature: hack-like-pro-introduction-regular-expressions-regex.1280x600.jpg
+  feature: regex.jpg
+  thumbnail: regex_thumbnail.jpg
 comments: true
 share: true
 ---

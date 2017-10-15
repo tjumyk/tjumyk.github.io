@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="500"
+   viewBox="0 0 1000 500"
+   id="svg4213"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="article.svg"
+   inkscape:export-filename="/home/kelvin/IdeaProjects/tjumyk.github.io/assets/image/article-350.png"
+   inkscape:export-xdpi="31.5"
+   inkscape:export-ydpi="31.5">
+  <defs
+     id="defs4215">
+    <clipPath
+       id="XMLID_79_">
+      <circle
+         r="66.199997"
+         id="use4193"
+         cy="69.599998"
+         cx="69" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.0628079"
+     inkscape:cx="473.44425"
+     inkscape:cy="215.75484"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4218">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="bg"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <rect
+       transform="translate(0,-552.36219)"
+       style="fill:#2c8aaa;fill-opacity:1;stroke:none;stroke-width:4.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4835"
+       width="1000"
+       height="500"
+       x="0"
+       y="552.36218" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-552.36219)">
+    <g
+       id="XMLID_33_"
+       transform="matrix(6.8272638,0,0,6.8272638,17.312449,447.17992)">
+      <path
+         class="st2"
+         d="m 93.4,99.9 -45.4,0 c -2.8,0 -5.2,-2.3 -5.2,-5.2 l 0,-57.6 c 0,-2.8 2.3,-5.2 5.2,-5.2 l 45.4,0 c 2.8,0 5.2,2.3 5.2,5.2 l 0,57.7 c 0,2.8 -2.4,5.1 -5.2,5.1 z"
+         id="XMLID_150_"
+         inkscape:connector-curvature="0"
+         style="fill:#f7f7f7" />
+      <rect
+         class="st0"
+         height="8.8000002"
+         id="XMLID_147_"
+         width="44.299999"
+         x="48.599998"
+         y="38.599998"
+         style="fill:#2c8aaa" />
+      <rect
+         class="st3"
+         height="3.0999999"
+         id="XMLID_144_"
+         width="44.299999"
+         x="48.599998"
+         y="50.700001"
+         style="fill:#bdc2c7" />
+      <rect
+         class="st3"
+         height="3.0999999"
+         id="XMLID_141_"
+         width="44.299999"
+         x="48.599998"
+         y="57.200001"
+         style="fill:#bdc2c7" />
+      <rect
+         class="st3"
+         height="3.0999999"
+         id="XMLID_138_"
+         width="44.299999"
+         x="48.599998"
+         y="77.300003"
+         style="fill:#bdc2c7" />
+      <rect
+         class="st3"
+         height="3.0999999"
+         id="XMLID_135_"
+         width="44.299999"
+         x="48.599998"
+         y="83.900002"
+         style="fill:#bdc2c7" />
+      <rect
+         class="st3"
+         height="3.0999999"
+         id="XMLID_53_"
+         width="33.099998"
+         x="48.599998"
+         y="90.599998"
+         style="fill:#bdc2c7" />
+      <rect
+         class="st3"
+         height="3.0999999"
+         id="XMLID_50_"
+         width="22.200001"
+         x="70.699997"
+         y="70.599998"
+         style="fill:#bdc2c7" />
+      <rect
+         class="st3"
+         height="3.0999999"
+         id="XMLID_41_"
+         width="22.200001"
+         x="70.800003"
+         y="63.900002"
+         style="fill:#bdc2c7" />
+      <rect
+         class="st0"
+         height="9.8000002"
+         id="XMLID_39_"
+         width="18.700001"
+         x="48.599998"
+         y="63.900002"
+         style="fill:#2c8aaa" />
+    </g>
+  </g>
+</svg>

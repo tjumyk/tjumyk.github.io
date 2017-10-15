@@ -5,7 +5,8 @@ description: "Review the most important features of C++ in an intermediate-level
 modified: 2017-10-11
 tags: [C++]
 image:
-  feature: smart-pointer.jpg
+  feature: smart_pointer.jpg
+  thumbnail: smart_pointer_thumbnail.jpg
 comments: true
 share: true
 ---

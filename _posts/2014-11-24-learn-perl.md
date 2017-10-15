@@ -6,15 +6,10 @@ modified: 2014-11-28
 tags: Perl
 image:
   feature: learn_perl.jpg
+  thumbnail: learn_perl_thumbnail.jpg
 comments: true
 share: true
 ---
-
-<script type="text/javascript">
-if(/learn-perl\/?$/.test(window.location.href)){
-	document.querySelector('.entry-image').style.maxHeight="100%";
-}
-</script>
 
 考试结束有1周了，这7天感觉过得飞快。说实话玩得不少，不过断断续续看完了一本Perl教材，也算比较充实。
 Perl给我的感觉是：灵活实用，但正因为太灵活，感觉程序规模上去后，代码很容易变得ugly。

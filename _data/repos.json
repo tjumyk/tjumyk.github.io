@@ -1,0 +1,153 @@
+{
+  "groups": [
+    {
+      "group_name": "Web Applications",
+      "bg": "#1b1c1d",
+      "dark_bg": true,
+      "icon": "world",
+      "repos": [
+        {
+          "id": "neteasy",
+          "logo": "https://raw.githubusercontent.com/tjumyk/neteasy/master/neteasy/static/image/logo-256.png"
+        },
+        {
+          "id": "gophotos",
+          "logo": "https://raw.githubusercontent.com/tjumyk/gophotos/master/gophotos/static/image/logo-256.png"
+        },
+        {
+          "id": "webscope",
+          "logo": "https://raw.githubusercontent.com/tjumyk/webscope/master/static/image/logo-256.png"
+        },
+        {
+          "id": "webslide",
+          "logo": "https://raw.githubusercontent.com/tjumyk/webslide/master/static/image/logo-256.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Games",
+      "icon": "game",
+      "repos": [
+        {
+          "id": "touhou-java",
+          "logo": "https://raw.githubusercontent.com/tjumyk/touhou-java/master/Screenshots/2_small.png"
+        },
+        {
+          "id": "court-of-medici",
+          "logo": "https://raw.githubusercontent.com/tjumyk/court-of-medici/gh-pages/image/CotM_Box.jpg"
+        },
+        {
+          "id": "Five_SDL",
+          "logo": "https://raw.githubusercontent.com/tjumyk/Five_SDL/master/screenshots/1_small.png",
+          "logo_full_width": true
+        },
+        {
+          "id": "sevenwonders",
+          "logo": "https://camo.githubusercontent.com/ffda965688919983ba69d3eb641b476408294ace/687474703a2f2f7374617469632e6f736368696e612e6e65742f75706c6f6164732f636f64652f3230313230362f30363135303530315f4b6477472e706e67",
+          "logo_full_width": true
+        },
+        {
+          "id": "mine-sweeper",
+          "logo": "https://raw.githubusercontent.com/tjumyk/mine-sweeper/master/screenshots/1.png",
+          "logo_full_width": true
+        }
+      ]
+    },
+    {
+      "group_name": "Research",
+      "bg": "#21ba45",
+      "dark_bg": true,
+      "icon": "student",
+      "repos": [
+        {
+          "id": "revs",
+          "logo": "https://raw.githubusercontent.com/tjumyk/revs/master/static/assets/image/logo-256.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Desktop Applications",
+      "icon": "desktop",
+      "repos": [
+        {
+          "id": "twtfmplayer",
+          "logo": "https://raw.githubusercontent.com/tjumyk/twtfmplayer/master/screenshot.png",
+          "logo_full_width": true
+        },
+        {
+          "id": "uTorrentMetro",
+          "logo": "https://raw.githubusercontent.com/tjumyk/uTorrentMetro/master/utorrentMetro/Assets/icon310x150.png",
+          "logo_full_width": true
+        },
+        {
+          "id": "MetaView",
+          "logo": "https://raw.githubusercontent.com/tjumyk/MetaView/master/src/org/tjumyk/metaview/images/logo_256.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Chrome Extensions",
+      "bg": "#2185d0",
+      "dark_bg": true,
+      "icon": "chrome",
+      "repos": [
+        {
+          "id": "unisearch",
+          "logo": "https://raw.githubusercontent.com/tjumyk/unisearch/master/image/logo-256.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Fun",
+      "icon": "wizard",
+      "repos": [
+        {
+          "id": "alistyle",
+          "logo": "https://raw.githubusercontent.com/tjumyk/alistyle/master/screenshot2.png",
+          "logo_full_width": true
+        },
+        {
+          "id": "dancing-nao"
+        }
+      ]
+    },
+    {
+      "group_name": "Development Tools",
+      "bg": "#6435c9",
+      "dark_bg": true,
+      "icon": "configure",
+      "repos": [
+        {
+          "id": "web-font-generator"
+        },
+        {
+          "id": "javafx-packager"
+        }
+      ]
+    },
+    {
+      "group_name": "Document Translations",
+      "icon": "translate",
+      "repos": [
+        {
+          "id": "sdl-tutorial-cn",
+          "logo": "https://raw.githubusercontent.com/tjumyk/sdl-tutorial-cn/gh-pages/assets/ico/favicon.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Miscellaneous",
+      "bg": "#00b5ad",
+      "dark_bg": true,
+      "icon": "asterisk",
+      "repos": [
+        {
+          "id": "litjson-portable"
+        },
+        {
+          "id": "simple-game-server"
+        }
+      ]
+    }
+  ]
+}
