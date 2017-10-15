@@ -37,23 +37,14 @@ angular.module 'app', []
     right_eye_init_offset = [0, .015]
     right_eye_move_range = [.02, .02]
 
-    $(document).on 'mousemove touchmove', (e)->
-      if e.pageX != undefined # 'mousemove'
-        x = e.pageX
-        y = e.pageY
-      else # touchmove
-        touch = e.touches[0]
-        if touch
-          x = touch.pageX
-          y = touch.pageY
-        else
-          return
-
+    $(document).on 'mousemove', (e)->
       base_offset = $animate_logo.offset()
       width = $animate_logo.width()
       height = $animate_logo.height()
       if $body.scrollTop() >= base_offset.top + height - $app_menu.height() # logo not visible
         return
+      x = e.pageX
+      y = e.pageY
 
       left_eye_angle = Math.atan2(y - (left_eye_anchor[1] * height + base_offset.top), x - (left_eye_anchor[0] * width + base_offset.left))
       left_eye_move_x = (left_eye_move_range[0] * Math.cos(left_eye_angle) - left_eye_init_offset[0]) * width
