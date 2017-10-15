@@ -37,16 +37,26 @@
         right_eye_anchor = [.665, .495];
         right_eye_init_offset = [0, .015];
         right_eye_move_range = [.02, .02];
-        return $(document).on('mousemove', function(e) {
-          var base_offset, height, left_eye_angle, left_eye_move_x, left_eye_move_y, right_eye_angle, right_eye_move_x, right_eye_move_y, width, x, y;
+        return $(document).on('mousemove touchmove', function(e) {
+          var base_offset, height, left_eye_angle, left_eye_move_x, left_eye_move_y, right_eye_angle, right_eye_move_x, right_eye_move_y, touch, width, x, y;
+          if (e.pageX !== void 0) {
+            x = e.pageX;
+            y = e.pageY;
+          } else {
+            touch = e.touches[0];
+            if (touch) {
+              x = touch.pageX;
+              y = touch.pageY;
+            } else {
+              return;
+            }
+          }
           base_offset = $animate_logo.offset();
           width = $animate_logo.width();
           height = $animate_logo.height();
           if ($body.scrollTop() >= base_offset.top + height - $app_menu.height()) {
             return;
           }
-          x = e.pageX;
-          y = e.pageY;
           left_eye_angle = Math.atan2(y - (left_eye_anchor[1] * height + base_offset.top), x - (left_eye_anchor[0] * width + base_offset.left));
           left_eye_move_x = (left_eye_move_range[0] * Math.cos(left_eye_angle) - left_eye_init_offset[0]) * width;
           left_eye_move_y = (left_eye_move_range[1] * Math.sin(left_eye_angle) - left_eye_init_offset[1]) * height;
