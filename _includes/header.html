@@ -3,13 +3,20 @@
 <div class="ui large top fixed app menu">
     <div class="ui container">
         <div class="item">
-            <a class="site-title" href="{{ "/" | relative_url }}"><img src="{{ "/assets/image/logo-64.png" | relative_url}}">{{ site.title | escape }}</a>
+            <a class="site-title" href="{{ '/' | relative_url }}"><img src="{{ '/assets/image/logo-64.png' | relative_url}}">{{ site.title | escape }}</a>
         </div>
         {% if page_paths %}
         {% for path in page_paths %}
         {% assign my_page = site.pages | where: "path", path | first %}
         {% if my_page.title %}
-        <a class="item" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+        <a class="{{my_page.menu.class}} item" href="{{ my_page.url | relative_url }}">
+            {% if my_page.menu.icon != blank %}
+            <i class="{{my_page.menu.icon}} icon"></i>
+            {% endif %}
+            {% if my_page.menu.icon_only != true %}
+            {{ my_page.title | escape }}
+            {% endif %}
+        </a>
         {% endif %}
         {% endfor %}
         {% endif %}

@@ -2,6 +2,10 @@
 layout: page
 title: About Me
 permalink: /about/
+menu:
+    class: 'right'
+    icon: 'info'
+    icon_only: true
 ---
 
 I am Yukai Miao, you may also call me Kelvin. 
