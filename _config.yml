@@ -50,5 +50,7 @@ plugins:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - CNAME
+  - README.md
+  - package.json
   - node_modules
-  - my-github-page.iml

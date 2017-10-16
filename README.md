@@ -1,7 +1,4 @@
-tjumyk.github.io
-================
+My homepage at Github
 
-Host my homepage on Github
-
-[View this site](http://tjumyk.github.io/)
+[View this site](https://tjumyk.github.io/)
 
