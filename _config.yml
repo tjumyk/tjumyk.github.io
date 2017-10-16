@@ -52,5 +52,6 @@ exclude:
   - Gemfile.lock
   - CNAME
   - README.md
+  - LICENSE.md
   - package.json
   - node_modules
