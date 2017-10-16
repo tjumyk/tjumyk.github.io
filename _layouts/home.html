@@ -6,9 +6,9 @@ layout: default
     <div class="ui master center aligned vertical segment">
         <div class="ui container">
             <div class="animate-logo">
-                <img src="{{ "/assets/image/logo-256-base.png" | relative_url }}">
-                <img class="left eye" src="{{ "/assets/image/logo-256-left-eye.png" | relative_url }}">
-                <img class="right eye" src="{{ "/assets/image/logo-256-right-eye.png" | relative_url }}">
+                <img src='{{ "/assets/image/logo-256-base.png" | relative_url }}'>
+                <img class="left eye" src='{{ "/assets/image/logo-256-left-eye.png" | relative_url }}'>
+                <img class="right eye" src='{{ "/assets/image/logo-256-right-eye.png" | relative_url }}'>
             </div>
             <h1 class="ui site header">{{site.title | escape}}</h1>
             <div class="switch-buttons">
@@ -38,11 +38,12 @@ layout: default
     </div>
     <div class="repo-groups" ng-class="{'full': show_full_repo_list}">
         {% for group in site.data.repos.groups %}
-        {% if group.bg == blank %}
-        <div class="ui vertical repo segment">
+        {% if group.bg != blank %}
+        {% assign bg_style = "background-color: " | append: group.bg %}
         {% else %}
-        <div class="ui vertical repo segment" style="background-color: {{group.bg}};">
+        {% assign bg_style = '' %}
         {% endif %}
+        <div class="ui vertical repo segment" style="{{bg_style}}">
             <div class="ui container">
                 {% if group.dark_bg != blank %}
                 {% assign header_class = 'inverted' %}
