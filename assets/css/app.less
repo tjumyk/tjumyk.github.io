@@ -21,6 +21,16 @@ body{
   }
   .site.header{
     margin-top: 0;
+    font-family: happy, Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 4em;
+    .char{
+      display: inline-block;
+      transform: translateY(0);
+      transition: transform 200ms ease-in-out;
+      &:hover{
+        transform: translateY(-10%)
+      }
+    }
   }
   .switch-buttons{
     margin-top: 1rem;

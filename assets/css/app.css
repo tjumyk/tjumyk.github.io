@@ -20,6 +20,21 @@ body.post {
 }
 .master.segment .site.header {
   margin-top: 0;
+  font-family: happy, Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 4em;
+}
+.master.segment .site.header .char {
+  display: inline-block;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: -webkit-transform 200ms ease-in-out;
+  transition: -webkit-transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+}
+.master.segment .site.header .char:hover {
+  -webkit-transform: translateY(-10%);
+          transform: translateY(-10%);
 }
 .master.segment .switch-buttons {
   margin-top: 1rem;

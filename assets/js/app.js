@@ -2,11 +2,13 @@
 (function() {
   angular.module('app', []).controller('HomeController', [
     '$scope', '$http', 'util', function($scope, $http, util) {
-      var $animate_logo, $app_menu, $articles, $body, $left_eye, $repos, $right_eye, github_user_name, init_animate_logo, init_lazyload, request_github_api;
+      var $animate_logo, $app_menu, $articles, $body, $left_eye, $meow_sound, $repos, $right_eye, $site_title, github_user_name, init_animate_logo, init_lazyload, init_site_title, request_github_api;
       $body = $('html, body');
       $app_menu = $('.app.menu');
       $repos = $('.repo-groups');
       $articles = $('.articles.segment');
+      $site_title = $('.site.header');
+      $meow_sound = $('.meow-sound');
       $animate_logo = $('.animate-logo');
       $left_eye = $animate_logo.find('img.left.eye');
       $right_eye = $animate_logo.find('img.right.eye');
@@ -61,6 +63,26 @@
           });
         });
       };
+      init_site_title = function() {
+        var ch, i, len, ref, results, span, text;
+        text = $site_title.text();
+        $site_title.attr('aria-label', text).empty();
+        ref = text.split('');
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          ch = ref[i];
+          span = $("<span class='char' aria-hidden='true'>" + ch + "</span>");
+          $site_title.append(span);
+          if (ch === '喵' && $meow_sound.length) {
+            results.push(span.on('mouseenter', function() {
+              return $meow_sound[0].play();
+            }));
+          } else {
+            results.push(void 0);
+          }
+        }
+        return results;
+      };
       init_lazyload = function() {
         var lazyload_config;
         lazyload_config = {
@@ -88,6 +110,7 @@
         });
       };
       init_animate_logo();
+      init_site_title();
       init_lazyload();
       return request_github_api();
     }

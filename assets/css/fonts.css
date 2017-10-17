@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/*!
+// ===========================================================
+// Web Font Generator 1.2.0
+// By [https://github.com/tjumyk]
+// ===========================================================
+*/
+@font-face {
+  font-family: 'happy';
+  src: url('../fonts/happy.eot');
+  /* IE9 Compat Modes */
+  src: url('../fonts/happy.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/happy.woff') format('woff'), /* Modern Browsers */ url('../fonts/happy.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/happy.svg#happy') format('svg');
+  /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+/*# sourceMappingURL=fonts.css.map */

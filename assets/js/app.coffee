@@ -5,6 +5,8 @@ angular.module 'app', []
   $app_menu = $('.app.menu')
   $repos = $('.repo-groups')
   $articles = $('.articles.segment')
+  $site_title = $('.site.header')
+  $meow_sound = $('.meow-sound')
 
   $animate_logo = $('.animate-logo')
   $left_eye = $animate_logo.find('img.left.eye')
@@ -59,6 +61,17 @@ angular.module 'app', []
       $right_eye.css
         transform: "translate(#{right_eye_move_x}px, #{right_eye_move_y}px)"
 
+  init_site_title = ->
+    text = $site_title.text()
+    $site_title.attr('aria-label', text).empty()
+    for ch in text.split('')
+      span = $("<span class='char' aria-hidden='true'>#{ch}</span>")
+      $site_title.append(span)
+      if ch == '喵' and $meow_sound.length
+        span.on 'mouseenter', ->
+          $meow_sound[0].play()
+
+
   init_lazyload = ->
     lazyload_config =
       load: ->
@@ -77,6 +90,7 @@ angular.module 'app', []
       console.error(util.formatResponseError(response))
 
   init_animate_logo()
+  init_site_title()
   init_lazyload()
   request_github_api()
 ]
