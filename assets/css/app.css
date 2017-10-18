@@ -207,8 +207,8 @@ pre.highlight {
   border: 1px solid rgba(34, 36, 38, 0.15);
   overflow-x: auto;
 }
-pre.highlight {
-  margin: 1em 40px;
+figure.highlight {
+  margin: 1em 0;
 }
 blockquote {
   padding-left: 0.5em;
