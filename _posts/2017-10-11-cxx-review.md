@@ -388,5 +388,4 @@ unsigned short hash(void *p){
     return (unsigned short) (val ^ (val >> 16)); /* XOR higher bits with lower bits
                                                     'short' is always 16-bits       */
 }
-
 ```
