@@ -26,9 +26,9 @@ intensive programming with C, Python or Java and understand the basic concepts o
    - **char16_t**(C++ 11): 16 bit Unicode character
    - **char32_t**(C++ 11): 32 bit Unicode character
 
-{% highlight c++ %}
-L'a'; /* type of this character literal is wchar_t */
-{% endhighlight %}
+```cpp
+L'a'; // type of this character literal is wchar_t
+```
 
 * Constructing new types using **declarator operators**
   - pointer types(C/C++): `int*`
@@ -37,19 +37,19 @@ L'a'; /* type of this character literal is wchar_t */
 
 * Limits of predefined types
 
-{% highlight c++ %}
+```cpp
 // machine-dependent limits
 std::numeric_limits<int>::max();
 std::numeric_limits<int>::min();
-{% endhighlight %}
+```
 
 * Implicit type conversion (C/C++)
 
-{% highlight c++ %}
+```cpp
 signed int a = -1;
 unsigned int b = 1;
-std::cout << a * b << std::endl; /* will print 4294967295 (2^32-1) */
-{% endhighlight %}
+std::cout << a * b << std::endl; // will print 4294967295 (2^32-1)
+```
 
 * `const` qualifier
    * Top-level `const` is ignored when we copy an object because copying an object doesn't change the copied object.
@@ -58,32 +58,32 @@ std::cout << a * b << std::endl; /* will print 4294967295 (2^32-1) */
       * we can convert non-`const` to `const`
       * the inverse conversion is invalid
       
-{% highlight c++ %}
+```cpp
 int i = 0;
-const int j = i;        /* top-level const is ignored */
-int k = j;              /* top-level const is ignored */
+const int j = i;        // top-level const is ignored
+int k = j;              // top-level const is ignored
 
-const int *p = &j;      /* low-level const must not be ignored */
+const int *p = &j;      // low-level const must not be ignored
 const int *const q = p; /* left-most const is low-level, 
                            right-most const is top-level */
-const int &r = j;       /* const in reference types is always low-level */
-{% endhighlight %}
+const int &r = j;       // const in reference types is always low-level
+```
 
 * Order of evaluating two operands of a bianry operator is **undefined**. (C/C++)
 
-{% highlight c++ %}
-f() + g(); /* order of evaluating f and g is undefined */
-{% endhighlight %}
+```cpp
+f() + g(); // order of evaluating f and g is undefined
+```
 
 ## Declarations vs Definitions
 
 * `extern` keyword declares a variable without defining it except when it is initialized.
 
-{% highlight c++ %}
-extern int i;     /* declaration */
-extern int i = 1; /* declaration and definition */
-int j;            /* declaration and definition */
-{% endhighlight %}
+```cpp
+extern int i;     // declaration
+extern int i = 1; // declaration and definition
+int j;            // declaration and definition
+```
 
 * Definitions vs Declarations
    * Every definition is also a declaration
@@ -102,25 +102,25 @@ int j;            /* declaration and definition */
      set to `nullptr`
    * `*` modifies a variable rather than the type
 
-{% highlight c++ %}
-int* p, q; /* same as int *p and int q, but no as int *q and int *q */
-{% endhighlight %}
+```cpp
+int* p, q; // same as int *p and int q, but no as int *q and int *q
+```
 
 * Complex pointers
 
-{% highlight c++ %}
-int * (*fp)(int*) /* pointer to a function taking an int* and returning an int* */
-int X::*pm        /* pointer to a member of class X of type int */
-{% endhighlight %}
+```cpp
+int * (*fp)(int*) // pointer to a function taking an int* and returning an int*
+int X::*pm        // pointer to a member of class X of type int
+```
 
 * `const` and pointers
 
-{% highlight c++ %}
+```cpp
 int i = 5;
 const int *p = &i; /* *p = 5 doesn't compile (read only dereference), 
                       but i can be either a const or non-const object */
-int const *q = &i; /* same as p */
-{% endhighlight %} 
+int const *q = &i; // same as p
+```
 
 ## References (C++ Only)
 
@@ -137,13 +137,13 @@ int const *q = &i; /* same as p */
    * We can think a reference as a dereferenced pointer
    * References are almost always implemented as pointers
 
-{% highlight c++ %}
+```cpp
 int i = 5;
-long &r = i;         /* compile error */
-const long &s = i;   /* correct */
-const long *t = &i;  /* compile error */
-const int &r2 = 100; /* correct */
-{% endhighlight %}
+long &r = i;         // compile error
+const long &s = i;   // correct
+const long *t = &i;  // compile error
+const int &r2 = 100; // correct
+```
 
 ## The `auto` type specifier (C++11)
 
@@ -155,20 +155,20 @@ Let the compiler infer the type for us
 * Use `auto &` if we want a reference to the deducted type. In this case, the top-level `const` in the initializer is 
   not top-level any more because we bind a reference to an initializer. So, that `const` will not be ignored.
 
-{% highlight c++ %}
-auto i = 0, *p = &i;    /* ok, i is int and p is int* */
-auto sz = 0, pi = 3.14; /* error: inconsistent types */
+```cpp
+auto i = 0, *p = &i;      // ok, i is int and p is int*
+auto sz = 0, pi = 3.14;   // error: inconsistent types
 
 int i;
 const int *const p = i;
-auto r = p;               /* const int * const -> const int* */
-const auto s = p;         /* const int* const */
+auto r = p;               // const int * const -> const int*
+const auto s = p;         // const int* const
 
 const int &j = 1;
-auto u = j;               /* const int & -> const int -> int */
-const auto v = j;         /* const int */
-auto &w = j;              /* const int & (low-level const kept)*/
-{% endhighlight %}
+auto u = j;               // const int & -> const int -> int
+const auto v = j;         // const int
+auto &w = j;              // const int & (low-level const kept)
+```
 
 
 ## Functions
@@ -179,33 +179,33 @@ auto &w = j;              /* const int & (low-level const kept)*/
    * Functions may return pointers or references 
 * A function may have an empty parameter list
 
-{% highlight c++ %}
-int foo();      /* OK: implicit empty parameter list */
-void bar(void); /* OK: explicit empty parameter list */
-{% endhighlight %}
+```cpp
+int foo();      // OK: implicit empty parameter list
+void bar(void); // OK: explicit empty parameter list
+```
 
 * Lvalue vs Rvalue
    * Lvalue: address of the object
    * Rvalue: content of the object
    
-{% highlight c++ %}
+```cpp
 int i = 5;
       i     =     i     +   1;
-/* (Lvalue)    (Rvalue) */
-{% endhighlight %}
+// (Lvalue)    (Rvalue)
+```
 
 * Parameter passing
    * pass by value: **Rvalue** of an actual argument is passed (C/C++/Java/...)
    * pass by reference: **Lvalue** of an actual argument is passed (C++ Only[?])
 
-{% highlight c++ %}
+```cpp
 void swap(int i, int j);   /* wrong, copy values of actual arguments
                               (pass by value) */
 // Two ways to fix it
-void swap(int *i, int *j); /* C style */
+void swap(int *i, int *j); // C style
 void swap(int &i, int &j); /* C++ style (pass by reference)
                               Use C++ style wherever possible */
-{% endhighlight %}
+```
 
 * Function overloading
    * overloading resolution is a three-step process
@@ -215,37 +215,34 @@ void swap(int &i, int &j); /* C++ style (pass by reference)
       * find a **best-match**: the type match **no worse in each argument** but better in at least on argument
    * top-level `const` is ignored for function overloading, low-level `const` is significant
    
-{% highlight c++ %}
+```cpp
 Record lookup(Phone p) {...};
 Record lookup(const Phone p) {...};  /* error: redefinition, 
                                         because top-level const is ignored */
 
 // The following overloading is correct: low-level const is not ignored
-Record lookup(Phone &p) {...};       /* (1) */
-Record lookup(const Phone &p) {...}; /* (2) */
+Record lookup(Phone &p) {...};       // (1)
+Record lookup(const Phone &p) {...}; // (2)
 
 Phone p1;
 const Phone p2;
-lookup(p1);     /* call (1) */
-lookup(p2);     /* call (2) */
-{% endhighlight %}
-    
+lookup(p1);     // call (1)
+lookup(p2);     // call (2)
+```
       
 * Inline Functions
    * Use case: we want to define **a small utility function** for a simple operation but we wish to **avoid the overhead
      of a function call** for such a simple function
    * An inline function is **expanded in line** at each point in the program where it is invoked.
 
-{% highlight c++ %}
+```cpp
 inline int min(int n, int m) {
   return (n < m) ? n : m;
 }
 std::cout << min(i, j) << std::endl; 
-// It will be expanded into something like the line below during compilation
-// So we need to put the definitions of inline functions in the header file
+/* It will be expanded into something like the line below during compilation.
+   So we need to put the definitions of inline functions in the header file   */
 std::cout << ((i < j) ? i : j) << std::endl;
-{% endhighlight %}
+```
 
 > To be continued
-
-I think GitHub is not updating my site. This is a test.
