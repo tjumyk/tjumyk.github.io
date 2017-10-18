@@ -1,3 +1,9 @@
+$ ->
+  $app_menu = $('.app.menu')
+  new Headroom $app_menu[0],
+    offset: $app_menu.height()
+  .init()
+
 angular.module 'app', []
 
 .controller 'HomeController', ['$scope', '$http', 'util', ($scope, $http, util)->

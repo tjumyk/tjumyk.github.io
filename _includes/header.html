@@ -1,6 +1,6 @@
 {% assign default_paths = site.pages | map: "path" %}
 {% assign page_paths = site.header_pages | default: default_paths %}
-<div class="ui large top fixed app menu">
+<div class="ui large top fixed app menu headroom">
     <div class="ui container">
         <div class="item">
             <a class="site-title" href="{{ '/' | relative_url }}"><img src="{{ '/assets/image/logo-64.png' | relative_url}}">{{ site.title | escape }}</a>
