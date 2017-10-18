@@ -64,7 +64,7 @@
         });
       };
       init_site_title = function() {
-        var ch, i, len, ref, results, span, text;
+        var ch, i, inner_span, len, ref, results, span, text;
         text = $site_title.text();
         $site_title.attr('aria-label', text).empty();
         ref = text.split('');
@@ -74,7 +74,9 @@
           span = $("<span class='char' aria-hidden='true'>" + ch + "</span>");
           $site_title.append(span);
           if (ch === '喵' && $meow_sound.length) {
-            results.push(span.on('mouseenter', function() {
+            inner_span = $("<span class='meow' aria-hidden='true'>" + ch + "</span>");
+            span.empty().append(inner_span);
+            results.push(inner_span.on('click', function() {
               return $meow_sound[0].play();
             }));
           } else {

@@ -27,7 +27,6 @@ body.post {
   display: inline-block;
   -webkit-transform: translateY(0);
           transform: translateY(0);
-  -webkit-transition: -webkit-transform 200ms ease-in-out;
   transition: -webkit-transform 200ms ease-in-out;
   transition: transform 200ms ease-in-out;
   transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
@@ -35,6 +34,38 @@ body.post {
 .master.segment .site.header .char:hover {
   -webkit-transform: translateY(-10%);
           transform: translateY(-10%);
+}
+.master.segment .site.header .char .meow {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transform: translateX(0) rotate(0);
+          transform: translateX(0) rotate(0);
+}
+.master.segment .site.header .char .meow:hover {
+  -webkit-animation: shake 200ms ease infinite;
+          animation: shake 200ms ease infinite;
+}
+@-webkit-keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translateX(-5%) rotate(-3deg);
+            transform: translateX(-5%) rotate(-3deg);
+  }
+  50% {
+    -webkit-transform: translateX(5%) rotate(3deg);
+            transform: translateX(5%) rotate(3deg);
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translateX(-5%) rotate(-3deg);
+            transform: translateX(-5%) rotate(-3deg);
+  }
+  50% {
+    -webkit-transform: translateX(5%) rotate(3deg);
+            transform: translateX(5%) rotate(3deg);
+  }
 }
 .master.segment .switch-buttons {
   margin-top: 1rem;
@@ -52,7 +83,6 @@ body.post {
 }
 .repo-groups {
   height: 800px;
-  -webkit-transition: height 2s;
   transition: height 2s;
   overflow-y: hidden;
 }
@@ -102,7 +132,6 @@ body.post {
   top: 0;
 }
 .animate-logo img.eye {
-  -webkit-transition: -webkit-transform 100ms;
   transition: -webkit-transform 100ms;
   transition: transform 100ms;
   transition: transform 100ms, -webkit-transform 100ms;
@@ -118,7 +147,6 @@ body.post {
   background-color: #141E30;
 }
 .post-master .bg.no-image {
-  background: -webkit-linear-gradient(left, #243B55, #141E30);
   background: linear-gradient(to right, #243B55, #141E30);
 }
 .post-master .bg-filter {

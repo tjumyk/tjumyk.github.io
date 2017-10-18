@@ -68,7 +68,9 @@ angular.module 'app', []
       span = $("<span class='char' aria-hidden='true'>#{ch}</span>")
       $site_title.append(span)
       if ch == '喵' and $meow_sound.length
-        span.on 'mouseenter', ->
+        inner_span = $("<span class='meow' aria-hidden='true'>#{ch}</span>")
+        span.empty().append(inner_span)
+        inner_span.on 'click', ->
           $meow_sound[0].play()
 
 

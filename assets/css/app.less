@@ -30,6 +30,18 @@ body{
       &:hover{
         transform: translateY(-10%)
       }
+      .meow{
+        display: inline-block;
+        cursor: pointer;
+        transform: translateX(0) rotate(0);
+        &:hover{
+          animation: shake 200ms ease infinite;
+        }
+        @keyframes shake{
+          0%,100% { transform:translateX(-5%) rotate(-3deg); }
+          50% { transform:translateX(5%) rotate(3deg); }
+        }
+      }
     }
   }
   .switch-buttons{
