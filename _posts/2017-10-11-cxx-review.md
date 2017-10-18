@@ -245,4 +245,148 @@ std::cout << min(i, j) << std::endl;
 std::cout << ((i < j) ? i : j) << std::endl;
 ```
 
-> To be continued
+## Scope
+
+* A local name can be **hidden**
+
+```c++
+int i = 3;
+for (int i = 0 ; i < 10; ++i){
+    std::cout << i << std::endl; // this 'i' hides the upper scope 'i'
+}
+std::cout << i << std::endl;     // the upper scope 'i' is unchanged
+```
+
+* namespaces 
+    * can be nested or aggregated (like Java packages)
+    * two special cases
+        * **Global scope**: the outermost namespace scope of a file
+        * **File scope**: the unnamed namespace scope declared in a file
+            * it has the same effect of `static` modifier in both C and C++ (static variables are restricted in the file)
+            * variables in this scope are accessible like global variables
+
+```cpp
+namespace A{
+    int a = 1;
+    namespace B{
+        int a = 2;
+    }
+    namespace C{
+        int a = 3;
+    }
+}
+// all these 'a's are different variables
+std::cout << A::a << std::endl;
+std::cout << A::B::a << std::endl;
+std::cout << A::C::a << std::endl;
+
+int i = 1;
+namespace { // unnamed namespace creates a file scope
+    int i = 2; // error, re-declare 'i'
+    int j = 3;
+}
+std::cout << j << std::endl;   // correct
+std::cout << ::j << std::endl; // also correct
+```
+
+* `using` directive
+    * `using namespace X;` make names in `X` accessible as in the current scope
+    * `using X::a;` only make `a` in the `X` scope accessible in the current scope
+    * may cause namespace clashes or namespace pollution
+    * do not use `using` on namespace `std` 
+
+```cpp
+namespace X {
+    int i, j, k;
+}
+int k;
+
+int foo(){
+    int i = 0;
+    using namespace X;
+    i=1;        // local i
+    j=2;        // X::j
+    k=3;        // error, ambiguous k
+    ::k=3;      // correct, explicitly use the global k
+    X::k=3;     // correct, explicitly use k in namespace X
+}
+
+int bar(){
+    int i = 0;
+    using X::j;
+    j=4;        // X::j
+    using X::k; // hides the global k
+    k=4;        // correct, X::k
+}
+```
+## Input/Output Streams
+
+* formatting
+   * set flags of `ios_base`: `.setf(flag, mask)`
+      * `flag`: a 
+   * pointer to functions that change the flags of `ios_base`:
+      * `std::hex`
+      * `std::dec`
+      * `std::`
+
+```cpp
+std::cout << 1331 << std::endl;                                // 1331
+std::cout << std::hex << 1331 << std::endl;                    // 533
+std::cout << 1331.123456 << std::endl;                         // 1331.12
+std::cout.setf(std::ios::scientific, std::ios::floatfield);    
+std::cout << 1331.123456 << std::endl;                         // 1.331123e+03
+std::cout << std::setprecision(3) << 1331.123456 << std::endl; // 1.331e+03
+std::cout << std::dec << 1331 << std::endl;                    // 1331
+std::cout.fill('X');
+std::cout.width(8);
+std::cout << 1331 << std::endl;                                // XXXX1331
+std::cout.setf(std::ios::left, std::ios::adjustfield);
+std::cout.width(8);
+std::cout << 1331 << std::endl;                                // 1331XXXX
+```
+
+## Strings
+
+* `std::string`
+    * constructors for empty, string, C-string and sub-string
+        * given empty parameter, the default initialiser makes an empty string
+    * use iterators and `[]` for speed
+    * use `at()` when you need range checking
+    * use `find()` (and its variants) to locate values in a string
+    * use `+` , `+=`, `insert` and `append` for concatenating strings
+    * `\0` is a valid character in C++, but treated as the terminator in C
+    * `isalpha`, `isdigit`, ... from C are provided in `<ctype.h>`
+
+## Initialization
+
+```cpp
+int i1 {1};     // C++11, list prepered
+int i2 = {1};
+int i3 = 1;
+int i4(1);
+
+int j1{};       // the default value used
+int j2 = int{}; // a temporaty default value used
+```
+
+## Type Conversions
+
+* C-style cast: dangerous
+* `static_cast`: basic type checks at compile time
+* `reinterpret_cast`: low level reinterpretation of the bits, e.g. a pointer to a long
+* `const_cast`: cast away the const, mostly for portability only
+* `dynamic_cast`: capability check at runtime
+
+```cpp
+double myDouble = 3.14;
+int cast1 = (int)myDouble;              // c-style
+int cast2 = int(myDouble);
+int cast3 = static_cast<int>(myDouble); // recommended
+
+unsigned short hash(void *p){
+    unsigned long val = reinterpret_cast<unsigned long>(p);
+    return (unsigned short) (val ^ (val >> 16)); /* XOR higher bits with lower bits
+                                                    'short' is always 16-bits       */
+}
+
+```
