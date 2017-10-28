@@ -27,6 +27,7 @@ body.post {
   display: inline-block;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+  -webkit-transition: -webkit-transform 200ms ease-in-out;
   transition: -webkit-transform 200ms ease-in-out;
   transition: transform 200ms ease-in-out;
   transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
@@ -82,8 +83,7 @@ body.post {
   margin: 0;
 }
 .repo-groups {
-  height: 800px;
-  transition: height 2s;
+  height: 1200px;
   overflow-y: hidden;
 }
 .repo-groups.full {
@@ -132,6 +132,7 @@ body.post {
   top: 0;
 }
 .animate-logo img.eye {
+  -webkit-transition: -webkit-transform 100ms;
   transition: -webkit-transform 100ms;
   transition: transform 100ms;
   transition: transform 100ms, -webkit-transform 100ms;
@@ -147,6 +148,7 @@ body.post {
   background-color: #141E30;
 }
 .post-master .bg.no-image {
+  background: -webkit-linear-gradient(left, #243B55, #141E30);
   background: linear-gradient(to right, #243B55, #141E30);
 }
 .post-master .bg-filter {
@@ -215,6 +217,7 @@ blockquote {
   border-left: solid 0.3em lightgray;
 }
 .headroom {
+  -webkit-transition: -webkit-transform 200ms linear;
   transition: -webkit-transform 200ms linear;
   transition: transform 200ms linear;
   transition: transform 200ms linear, -webkit-transform 200ms linear;
