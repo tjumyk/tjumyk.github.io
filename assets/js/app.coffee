@@ -1,8 +1,19 @@
 $ ->
+  # init Headroom
   $app_menu = $('.app.menu')
   new Headroom $app_menu[0],
     offset: $app_menu.height()
   .init()
+
+  # init MathJax
+  if $('script[type^="math"]').length > 0
+    $(document.body).append('<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>')
+
+  # init tables
+  $('table').each ->
+    $this = $(@)
+    if not $this.hasClass('ui')
+      $this.addClass('ui celled table')
 
 angular.module 'app', []
 
