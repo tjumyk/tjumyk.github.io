@@ -230,4 +230,12 @@ blockquote {
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
 }
+code.highlighter-rouge {
+  font-size: 0.875em;
+  color: #d14;
+  padding: 0.125em 0.25em;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 0.25em;
+}
 /*# sourceMappingURL=app.css.map */
