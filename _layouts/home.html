@@ -65,7 +65,7 @@ layout: default
                     {% assign meta_date_to_now_end = ")}}" %}
                     <div class="column">
                         <div class="ui fluid link card">
-                            <a class="repo-logo image" href="{{repo_url}}">
+                            <a class="repo-logo image" target="_blank" href="{{repo_url}}">
                                 {% if repo.unmaintained %}
                                 <div class="ui yellow ribbon label">
                                     <i class="warning circle icon"></i>
@@ -83,7 +83,7 @@ layout: default
                                 {% endif %}
                             </a>
                             <div class="content">
-                                <a class="header" href="{{repo_url}}">{{ repo.id | escape }}</a>
+                                <a class="header" target="_blank" href="{{repo_url}}">{{ repo.id | escape }}</a>
                                 <div class="meta" ng-show="repos['{{repo.id}}']">
                                     <span class="date">Updated {{meta_date_to_now_start}}pushed_at{{meta_date_to_now_end}}</span>
                                 </div>
