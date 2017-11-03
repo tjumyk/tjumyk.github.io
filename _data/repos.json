@@ -52,7 +52,7 @@
           "id": "court-of-medici",
           "logo": "https://raw.githubusercontent.com/tjumyk/court-of-medici/gh-pages/image/CotM_Box.jpg",
           "unmaintained": true
-        },
+        }
       ]
     },
     {
@@ -110,7 +110,9 @@
           "logo_full_width": true
         },
         {
-          "id": "dancing-nao"
+          "id": "dancing-nao",
+          "logo": "https://raw.githubusercontent.com/tjumyk/dancing-nao/master/screenshots/1_small.png",
+          "logo_full_width": true
         }
       ]
     },
@@ -121,11 +123,15 @@
       "icon": "configure",
       "repos": [
         {
-          "id": "web-font-generator"
+          "id": "web-font-generator",
+          "logo": "https://raw.githubusercontent.com/tjumyk/web-font-generator/master/screenshots/2_small.png",
+          "logo_full_width": true
         },
         {
           "id": "javafx-packager",
-          "unmaintained": true
+          "unmaintained": true,
+          "logo": "https://raw.githubusercontent.com/tjumyk/javafx-packager/master/dist/screenshot_small.png",
+          "logo_full_width": true
         }
       ]
     },
