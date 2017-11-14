@@ -390,4 +390,61 @@ unsigned short hash(void *p){
 }
 ```
 
-> To be continued
+## Arrays
+
+* C arrays and C++ arrays
+
+```cpp
+int a[10]; // C array
+
+std::array<int, 4> b = { 0, 1, 2, 3 }; /* compile-time fixed size, 
+                                          cannot hold reference types,
+                                          need to be initialized */  
+std::array<int, 4> c = b;
+
+int a2[3][4] = {
+    1, 2, 3, 4,
+    5, 6, 7, 8,
+    9, 10, 11, 12
+};
+
+// 3 ways to iterate 2D arryas
+
+// (1) C-style a[i][j]
+
+// (2) C-style pointer arithmetics (optionally with type alias or 'auto') (ommited)
+
+// (3) C++11 iterators
+for(auto p = std::begin(a2), pe = std::end(a2); p != pe; ++p) {
+    for (auto q = std::begin(*p), qe = std::end(*p); q != qe; ++q)
+        std::cout << *q << ' ';
+    std::cout << std::endl;
+}
+```
+
+* Range-based for loop (C++11)
+
+```cpp
+std::string s("Hello");
+for(auto &c : s) // can use reference types
+    c = std::toupper(c);
+std::cout << s << std:endl;  // HELLO
+```
+
+## STL
+
+* Function template
+
+A function template is a **prescription** for the compiler to generate particular instances of a function varying by type
+
+```cpp
+template <typename T>
+T min(T a, T b) {
+    return a < b ? a : b;
+}
+```
+
+> I skip the rest of contents about STL since I have no plan to study it seriously right now. It seems quite complex 
+> especially considering C++11. Currently, a simple replacement of STL for C programming is [GLib](https://developer.gnome.org/glib/). 
+
+> I am going to add some contents about smart pointers later, and the other contents will be added when I do have free time.
