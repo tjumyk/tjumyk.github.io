@@ -7,6 +7,10 @@
       "icon": "world",
       "repos": [
         {
+          "id": "smonitor",
+          "logo": "https://raw.githubusercontent.com/tjumyk/smonitor/master/static/image/logo-256.png"
+        },
+        {
           "id": "neteasy",
           "logo": "https://raw.githubusercontent.com/tjumyk/neteasy/master/neteasy/static/image/logo-256.png"
         },
