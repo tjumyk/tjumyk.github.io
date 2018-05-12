@@ -156,6 +156,9 @@
       "icon": "asterisk",
       "repos": [
         {
+          "id": "slurm-web"
+        },
+        {
           "id": "simple-game-server"
         },
         {
