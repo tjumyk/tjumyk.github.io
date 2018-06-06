@@ -41,7 +41,7 @@ angular.module 'app', []
       scroll_to = $articles
     if scroll_to
       $body.animate
-        scrollTop: scroll_to.offset().top - $app_menu.height()
+        scrollTop: scroll_to.offset().top # - $app_menu.height()
       , 500
     return
 

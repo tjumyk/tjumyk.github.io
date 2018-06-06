@@ -42,7 +42,7 @@
         }
         if (scroll_to) {
           $body.animate({
-            scrollTop: scroll_to.offset().top - $app_menu.height()
+            scrollTop: scroll_to.offset().top
           }, 500);
         }
       };

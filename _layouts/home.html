@@ -36,27 +36,15 @@ layout: default
             </div>
         </div>
     </div>
-    <div class="repo-groups" ng-class="{'full': show_full_repo_list}">
-        {% for group in site.data.repos.groups %}
-        {% if group.bg != blank %}
-        {% assign bg_style = "background-color: " | append: group.bg %}
-        {% else %}
-        {% assign bg_style = '' %}
-        {% endif %}
-        <div class="ui vertical repo segment" style="{{bg_style}}">
+    <div class="repo-groups full">
+        <div class="ui vertical inverted repo segment">
             <div class="ui container">
-                {% if group.dark_bg != blank %}
-                {% assign header_class = 'inverted' %}
-                {% else %}
-                {% assign header_class = '' %}
-                {% endif %}
-                <h1 class="ui center aligned {{header_class}} header">
-                    {% if group.icon %}
-                    <i class="{{group.icon}} icon"></i>
-                    {% endif %}
-                    {{ group.group_name | escape }}
+                <h1 class="ui center aligned inverted header">
+                    <i class="fork icon"></i>
+                    Repositories
                 </h1>
                 <div class="ui doubling four column grid">
+                    {% for group in site.data.repos.groups %}
                     {% for repo in group.repos %}
                     {% assign repo_url = repo.id | prepend: "/" | prepend: site.github_username | prepend: "https://github.com/" %}
                     {% assign meta_start = "{{repos['" | append: repo.id | append: "']." %}
@@ -65,6 +53,10 @@ layout: default
                     {% assign meta_date_to_now_end = ")}}" %}
                     <div class="column">
                         <div class="ui fluid link card">
+                            <div class="content">
+                                <a class="center aligned header" target="_blank" href="{{repo_url}}">{{ repo.id | escape }}</a>
+                                <div class="center aligned meta"><i class="{{group.icon}} icon"></i> {{group.group_name}}</div>
+                            </div>
                             <a class="repo-logo image" target="_blank" href="{{repo_url}}">
                                 {% if repo.unmaintained %}
                                 <div class="ui yellow ribbon label">
@@ -83,7 +75,6 @@ layout: default
                                 {% endif %}
                             </a>
                             <div class="content">
-                                <a class="header" target="_blank" href="{{repo_url}}">{{ repo.id | escape }}</a>
                                 <div class="meta" ng-show="repos['{{repo.id}}']">
                                     <span class="date">Updated {{meta_date_to_now_start}}pushed_at{{meta_date_to_now_end}}</span>
                                 </div>
@@ -103,18 +94,9 @@ layout: default
                         </div>
                     </div>
                     {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="repo-list-toggle">
-        <div class="ui large primary button" ng-click="show_full_repo_list=!show_full_repo_list">
-            <span><i class="large angle double icon" ng-class="{'up': show_full_repo_list, 'down': !show_full_repo_list}"></i></span>
-            <span ng-hide="show_full_repo_list">Show</span>
-            <span ng-show="show_full_repo_list">Hide</span>
-            Full Repo List
-            <span><i class="large angle double icon" ng-class="{'up': show_full_repo_list, 'down': !show_full_repo_list}"></i></span>
         </div>
     </div>
     <div class="ui vertical articles segment">

@@ -1,7 +1,7 @@
 {
   "groups": [
     {
-      "group_name": "Web Applications",
+      "group_name": "Web Application",
       "bg": "#1b1c1d",
       "dark_bg": true,
       "icon": "world",
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "group_name": "Games",
+      "group_name": "Game",
       "icon": "game",
       "repos": [
         {
@@ -50,12 +50,14 @@
         {
           "id": "touhou-java",
           "logo": "https://raw.githubusercontent.com/tjumyk/touhou-java/master/Screenshots/2_small.png",
-          "unmaintained": true
+          "unmaintained": true,
+          "logo_full_width": true
         },
         {
           "id": "court-of-medici",
           "logo": "https://raw.githubusercontent.com/tjumyk/court-of-medici/gh-pages/image/CotM_Box.jpg",
-          "unmaintained": true
+          "unmaintained": true,
+          "logo_full_width": true
         }
       ]
     },
@@ -72,7 +74,7 @@
       ]
     },
     {
-      "group_name": "Desktop Applications",
+      "group_name": "Desktop Application",
       "icon": "desktop",
       "repos": [
         {
@@ -93,7 +95,7 @@
       ]
     },
     {
-      "group_name": "Chrome Extensions",
+      "group_name": "Chrome Extension",
       "bg": "#2185d0",
       "dark_bg": true,
       "icon": "chrome",
@@ -121,7 +123,7 @@
       ]
     },
     {
-      "group_name": "Development Tools",
+      "group_name": "Development Tool",
       "bg": "#6435c9",
       "dark_bg": true,
       "icon": "configure",
@@ -140,7 +142,7 @@
       ]
     },
     {
-      "group_name": "Document Translations",
+      "group_name": "Document Translation",
       "icon": "translate",
       "repos": [
         {
