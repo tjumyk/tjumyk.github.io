@@ -6,13 +6,13 @@
             <div class="three wide column">
                 <h4 class="ui inverted header">Contact</h4>
                 <div class="ui inverted list">
-                    <a class="item">
+                    <div class="item">
                         {% if site.author %}
                         {{ site.author | escape }}
                         {% else %}
                         {{ site.title | escape }}
                         {% endif %}
-                    </a>
+                    </div>
                     {% if site.email %}
                     <a class="item" href="mailto:{{ site.email }}">{{ site.email }}</a>
                     {% endif %}
@@ -31,7 +31,10 @@
 
             <div class="ten wide column">
                 <h4 class="ui inverted header">About</h4>
-                <p>{{ site.description | escape }}</p>
+                <div class="ui inverted list">
+                    <div class="item">{{ site.description | escape }}</div>
+                    <a href="/about/" class="item"><i class="info icon"></i> About me</a>
+                </div>
             </div>
         </div>
 
