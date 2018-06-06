@@ -14,6 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Kelvin喵~
+author: Yukai (Kelvin) Miao
 email: tjumyk@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Yukai (Kelvin) Miao's homepage at GitHub
