@@ -23,7 +23,7 @@ or even a data scientist(大数据砖家) :money_mouth_face: .
 ## EDUCATION
 
 2017.2 - Now
-: PhD (Computer Science), School of Computer Science and Engineering, University of New South Wales, Australia
+: PhD Candidate (Computer Science), School of Computer Science and Engineering, University of New South Wales, Australia
 
 2014.7 - 2016.9
 : Master of Information Technology, School of Computer Science and Engineering, University of New South Wales, Australia
