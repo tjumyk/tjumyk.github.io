@@ -165,6 +165,9 @@
         },
         {
           "id": "litjson-portable"
+        },
+        {
+          "id": "pyquota"
         }
       ]
     }
