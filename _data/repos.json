@@ -70,7 +70,10 @@
         {
           "id": "revs",
           "logo": "https://raw.githubusercontent.com/tjumyk/revs/master/static/assets/image/logo-256.png"
-        }
+        },
+	{
+          "id": "RMA"
+	}
       ]
     },
     {
